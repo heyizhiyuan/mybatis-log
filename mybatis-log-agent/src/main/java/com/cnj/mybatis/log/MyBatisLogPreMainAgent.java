@@ -1,6 +1,5 @@
 package com.cnj.mybatis.log;
 
-import org.apache.commons.lang3.reflect.FieldUtils;
 import org.apache.ibatis.javassist.ClassPool;
 import org.apache.ibatis.javassist.CtClass;
 import org.apache.ibatis.javassist.CtMethod;
