@@ -9,7 +9,7 @@ mybatis sql格式化工具
 
 ![img.png](doc/springboot-agent-vmoptions.png)
 
-### 1.3 启动程序
+### 1.3 启动程序，查看效果
 
 执行sql之后，就会打印出格式化好的sql了
 
