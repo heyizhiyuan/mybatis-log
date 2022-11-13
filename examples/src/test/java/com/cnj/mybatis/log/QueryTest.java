@@ -5,8 +5,6 @@ import com.cnj.mybatis.log.mapper.UserMapper;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.junit.jupiter.api.Test;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
@@ -20,8 +18,6 @@ import java.util.List;
  */
 @SpringBootTest(classes = ExampleApplication.class)
 public class QueryTest {
-
-    private static final Logger LOG = LoggerFactory.getLogger(QueryTest.class);
 
     @Autowired
     private SqlSessionFactory sqlSessionFactory;

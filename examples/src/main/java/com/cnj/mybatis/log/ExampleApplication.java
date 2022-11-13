@@ -26,7 +26,7 @@ public class ExampleApplication {
     }
 
     @GetMapping("/selectUserById")
-    public User queryUserList(String userId){
+    public User queryUserList(String userId) {
         return userMapper.selectById(userId);
     }
 

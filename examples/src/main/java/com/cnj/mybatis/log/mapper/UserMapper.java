@@ -16,19 +16,18 @@ import java.util.List;
 public interface UserMapper {
 
     @Select("SELECT * FROM user WHERE id=#{id}")
-    User selectById(@Param("id")String id);
+    User selectById(@Param("id") String id);
 
     @Select("SELECT * FROM user WHERE id=${id}")
-    User selectById2(@Param("id")String id);
+    User selectById2(@Param("id") String id);
 
     @Select("SELECT * FROM user WHERE sex=#{sex} AND user_name=#{userName}")
     List<User> selectList(User user);
 
     @Insert(
             "INSERT INTO user(id, user_name, sex, create_date, created_by, last_update_date, last_updated_by) " +
-            "VALUES (#{id}, #{userName}, #{sex}, #{createDate}, #{createdBy}, #{lastUpdateDate}, #{lastUpdatedBy})"
+                    "VALUES (#{id}, #{userName}, #{sex}, #{createDate}, #{createdBy}, #{lastUpdateDate}, #{lastUpdatedBy})"
     )
     int insert(User user);
-
 
 }

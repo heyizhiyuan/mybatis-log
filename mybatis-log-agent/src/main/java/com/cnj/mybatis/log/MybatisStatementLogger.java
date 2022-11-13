@@ -12,7 +12,9 @@ import java.lang.reflect.Proxy;
 import java.sql.CallableStatement;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
 /**
  * @author czz
@@ -78,7 +80,7 @@ public class MybatisStatementLogger extends BaseJdbcLogger implements Invocation
             System.out.println("<========================================================================================>");
             System.out.println(buildSql(this.getParameterValues(), this.sql));
             System.out.println("<========================================================================================>");
-        }catch (Throwable t){
+        } catch (Throwable t) {
             System.err.println("mybatis-log-agent 打印sql出错了");
             t.printStackTrace();
         }
@@ -122,7 +124,7 @@ public class MybatisStatementLogger extends BaseJdbcLogger implements Invocation
         return typeList;
     }
 
-    public class ParameterValue{
+    public class ParameterValue {
 
         private final Object value;
 
@@ -130,9 +132,9 @@ public class MybatisStatementLogger extends BaseJdbcLogger implements Invocation
 
         ParameterValue(Object value) {
             this.value = value;
-            if(value == null){
+            if (value == null) {
                 this.stringValue = "null";
-            }else{
+            } else {
                 this.stringValue = objectValueString(value);
             }
         }
@@ -141,7 +143,7 @@ public class MybatisStatementLogger extends BaseJdbcLogger implements Invocation
             return stringValue;
         }
 
-        public boolean isNullOrNumber(){
+        public boolean isNullOrNumber() {
             return value == null || value instanceof Number;
         }
     }
@@ -153,9 +155,9 @@ public class MybatisStatementLogger extends BaseJdbcLogger implements Invocation
         for (int i = 0; i < chars.length; i++) {
             if (canReplacePlaceholder(chars[i], i == 0 ? null : chars[i - 1])) {
                 ParameterValue parameterValue = parameterValues.get(index++);
-                String value = parameterValue.isNullOrNumber()? parameterValue.getStringValue(): "'" + parameterValue.getStringValue() + "'";
+                String value = parameterValue.isNullOrNumber() ? parameterValue.getStringValue() : "'" + parameterValue.getStringValue() + "'";
                 result.append(value);
-            }else{
+            } else {
                 result.append(chars[i]);
             }
         }
@@ -163,7 +165,7 @@ public class MybatisStatementLogger extends BaseJdbcLogger implements Invocation
     }
 
     public static boolean canReplacePlaceholder(char c, Character prevChar) {
-        if (c == '\'' || prevChar!= null && prevChar == '\'') {
+        if (c == '\'' || prevChar != null && prevChar == '\'') {
             return false;
         }
         return c == '?';
