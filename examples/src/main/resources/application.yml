@@ -1,0 +1,18 @@
+spring:
+  application:
+    name: mybatis-log-example
+  datasource:
+    url: jdbc:sqlite:./db/test.db
+    driver-class-name: org.sqlite.JDBC
+
+mybatis:
+  configuration:
+    log-impl: org.apache.ibatis.logging.slf4j.Slf4jImpl
+    call-setters-on-nulls: true
+    # 驼峰式命名
+    map-underscore-to-camel-case: true
+
+logging:
+  level:
+    org.apache.ibatis: debug
+    com.cnj.mybatis.log: debug
