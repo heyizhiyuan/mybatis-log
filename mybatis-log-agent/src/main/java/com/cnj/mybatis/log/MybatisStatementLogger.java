@@ -79,7 +79,7 @@ public class MybatisStatementLogger extends BaseJdbcLogger implements Invocation
             System.out.println(buildSql(this.getParameterValues(), this.sql));
             System.out.println("<========================================================================================>");
         }catch (Throwable t){
-            System.err.println("mybatis-log 打印sql出错了");
+            System.err.println("mybatis-log-agent 打印sql出错了");
             t.printStackTrace();
         }
     }

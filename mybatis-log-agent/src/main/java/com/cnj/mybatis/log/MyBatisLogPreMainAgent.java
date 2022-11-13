@@ -20,7 +20,7 @@ public class MyBatisLogPreMainAgent {
     public static final String LOG_CLASS_NAME = "org.apache.ibatis.executor.BaseExecutor";
 
     public static void premain(String agentArgs, Instrumentation inst) {
-        System.out.println("mybatis-log 已加载");
+        System.out.println("mybatis-log-agent 已加载");
         inst.addTransformer(new LogTransformer());
     }
 
@@ -32,7 +32,7 @@ public class MyBatisLogPreMainAgent {
                 // 如果返回null则字节码不会被修改
                 return null;
             }
-            System.out.println("mybatis-log 开始替换类字节码");
+            System.out.println("mybatis-log-agent 开始替换类字节码");
             try {
                 CtClass cc = ClassPool.getDefault().get(LOG_CLASS_NAME);
                 cc.removeMethod(cc.getDeclaredMethod("getConnection"));
@@ -47,10 +47,10 @@ public class MyBatisLogPreMainAgent {
                 cc.addMethod(ctMethod);
                 byte[] bytes = cc.toBytecode();
                 cc.detach();
-                System.out.println("mybatis-log 替换类字节码成功");
+                System.out.println("mybatis-log-agent 替换类字节码成功");
                 return bytes;
             } catch (Exception e) {
-                System.out.println("mybatis-log 替换类字节码失败");
+                System.out.println("mybatis-log-agent 替换类字节码失败");
                 e.printStackTrace();
                 return null;
             }
