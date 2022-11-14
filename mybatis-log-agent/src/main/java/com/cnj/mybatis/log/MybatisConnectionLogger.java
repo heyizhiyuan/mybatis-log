@@ -11,6 +11,7 @@ import java.lang.reflect.Proxy;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.Statement;
+import java.util.StringTokenizer;
 
 /**
  * @author czz
@@ -34,7 +35,7 @@ public class MybatisConnectionLogger extends BaseJdbcLogger implements Invocatio
             }
             if ("prepareStatement".equals(method.getName()) || "prepareCall".equals(method.getName())) {
                 if (isDebugEnabled()) {
-                    debug(" Preparing: " + removeExtraWhitespace((String) params[0]), true);
+                    debug(" Preparing: " + com.cnj.mybatis.log.MybatisConnectionLogger.removeExtraWhitespaces((String) params[0]), true);
                 }
                 PreparedStatement stmt = (PreparedStatement) method.invoke(connection, params);
                 stmt = com.cnj.mybatis.log.MybatisStatementLogger.newInstance((String) params[0], stmt, statementLog, queryStack);
@@ -72,6 +73,20 @@ public class MybatisConnectionLogger extends BaseJdbcLogger implements Invocatio
      */
     public Connection getConnection() {
         return connection;
+    }
+
+    public static String removeExtraWhitespaces(String original) {
+        StringTokenizer tokenizer = new StringTokenizer(original);
+        StringBuilder builder = new StringBuilder();
+        boolean hasMoreTokens = tokenizer.hasMoreTokens();
+        while (hasMoreTokens) {
+            builder.append(tokenizer.nextToken());
+            hasMoreTokens = tokenizer.hasMoreTokens();
+            if (hasMoreTokens) {
+                builder.append(' ');
+            }
+        }
+        return builder.toString();
     }
 
 }
