@@ -1,6 +1,6 @@
-package com.cnj.mybatis.log.mapper;
+package com.cnj.mybatis.log.example.mapper;
 
-import com.cnj.mybatis.log.entity.User;
+import com.cnj.mybatis.log.example.entity.User;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;

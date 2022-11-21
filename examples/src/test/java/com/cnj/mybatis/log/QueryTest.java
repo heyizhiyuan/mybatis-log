@@ -1,7 +1,8 @@
 package com.cnj.mybatis.log;
 
-import com.cnj.mybatis.log.entity.User;
-import com.cnj.mybatis.log.mapper.UserMapper;
+import com.cnj.mybatis.log.example.ExampleApplication;
+import com.cnj.mybatis.log.example.entity.User;
+import com.cnj.mybatis.log.example.mapper.UserMapper;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.junit.jupiter.api.Test;

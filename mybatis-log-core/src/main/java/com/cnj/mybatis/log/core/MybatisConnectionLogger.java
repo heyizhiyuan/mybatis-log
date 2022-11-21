@@ -1,4 +1,4 @@
-package com.cnj.mybatis.log;
+package com.cnj.mybatis.log.core;
 
 import org.apache.ibatis.logging.Log;
 import org.apache.ibatis.logging.jdbc.BaseJdbcLogger;
@@ -35,10 +35,10 @@ public class MybatisConnectionLogger extends BaseJdbcLogger implements Invocatio
             }
             if ("prepareStatement".equals(method.getName()) || "prepareCall".equals(method.getName())) {
                 if (isDebugEnabled()) {
-                    debug(" Preparing: " + com.cnj.mybatis.log.MybatisConnectionLogger.removeExtraWhitespaces((String) params[0]), true);
+                    debug(" Preparing: " + MybatisConnectionLogger.removeExtraWhitespaces((String) params[0]), true);
                 }
                 PreparedStatement stmt = (PreparedStatement) method.invoke(connection, params);
-                stmt = com.cnj.mybatis.log.MybatisStatementLogger.newInstance((String) params[0], stmt, statementLog, queryStack);
+                stmt = MybatisStatementLogger.newInstance((String) params[0], stmt, statementLog, queryStack);
                 return stmt;
             } else if ("createStatement".equals(method.getName())) {
                 Statement stmt = (Statement) method.invoke(connection, params);

@@ -1,6 +1,6 @@
-package com.cnj.mybatis.log;
+package com.cnj.mybatis.log.core;
 
-import com.cnj.mybatis.log.util.FieldUtils;
+import com.cnj.mybatis.log.core.util.FieldUtils;
 import org.apache.ibatis.logging.Log;
 import org.apache.ibatis.logging.jdbc.BaseJdbcLogger;
 import org.apache.ibatis.logging.jdbc.ResultSetLogger;
@@ -81,7 +81,7 @@ public class MybatisStatementLogger extends BaseJdbcLogger implements Invocation
             System.out.println(buildSql(this.getParameterValues(), this.sql));
             System.out.println("<========================================================================================>");
         } catch (Throwable t) {
-            System.err.println("mybatis-log-agent 打印sql出错了");
+            System.err.println("MybatisLog 打印sql出错了");
             t.printStackTrace();
         }
     }

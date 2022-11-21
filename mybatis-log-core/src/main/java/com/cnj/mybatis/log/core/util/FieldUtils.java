@@ -1,4 +1,4 @@
-package com.cnj.mybatis.log.util;
+package com.cnj.mybatis.log.core.util;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.Member;

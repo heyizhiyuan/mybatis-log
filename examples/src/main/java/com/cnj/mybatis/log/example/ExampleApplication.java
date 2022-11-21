@@ -1,7 +1,8 @@
-package com.cnj.mybatis.log;
+package com.cnj.mybatis.log.example;
 
-import com.cnj.mybatis.log.entity.User;
-import com.cnj.mybatis.log.mapper.UserMapper;
+import com.cnj.mybatis.log.bytebuddy.MybatisLogInstaller;
+import com.cnj.mybatis.log.example.entity.User;
+import com.cnj.mybatis.log.example.mapper.UserMapper;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
@@ -14,7 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
  * @since 2022/11/12 下午4:33
  */
 @SpringBootApplication
-@MapperScan(basePackages = "com.cnj.mybatis.log.mapper")
+@MapperScan(basePackages = "com.cnj.mybatis.log.example.mapper")
 @RestController
 public class ExampleApplication {
 
@@ -22,6 +23,7 @@ public class ExampleApplication {
     UserMapper userMapper;
 
     public static void main(String[] args) {
+        MybatisLogInstaller.install();
         SpringApplication.run(ExampleApplication.class, args);
     }
 

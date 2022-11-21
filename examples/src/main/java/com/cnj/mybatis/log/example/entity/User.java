@@ -1,4 +1,4 @@
-package com.cnj.mybatis.log.entity;
+package com.cnj.mybatis.log.example.entity;
 
 import java.util.Date;
 
